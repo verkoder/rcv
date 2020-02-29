@@ -14,8 +14,8 @@ Download all the CSV files I provide (there are 8)
 2. Convert them all to CSV, putting them all in the same folder.
 
 ### Run the script
-Download rcv.py, and place in the same folder as the CSV files.
-At a command prompt/terminal, type
+Download rcv.py (or rcv_2.py if using Python2) and place in the same folder as the CSV files.
+At a command prompt/terminal, run the file:
 ```
 python rcv.py
 ```
