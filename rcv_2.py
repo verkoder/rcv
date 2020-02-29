@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 '''
-Ranked Choice Voting election tabulator / Python3
+Ranked Choice Voting election tabulator / Python2
 Created to verify results of 2018 Maine CD2 Congressional election data:
  https://www.maine.gov/sos/cec/elec/results/results18.html#Nov6
 Using rules:
@@ -30,7 +30,7 @@ def collect(fields=(3, 8)):
     files = [x for x in os.listdir('.') if x.endswith('.csv')]
 
     for f in files:
-        print(f'Opening {f}')
+        print 'Opening %s' % f
         with open('%s' % f) as fil:
             at = 0
             reedr = csv.reader(fil, delimiter=',')
@@ -42,7 +42,7 @@ def collect(fields=(3, 8)):
                     ballots.append(ballot)
                 at += 1
 
-    print(f'{len(ballots)} ballots collected!')
+    print '%i ballots collected!' % len(ballots)
     return ballots
 
 def process(ballots, key=KEY):
@@ -59,7 +59,7 @@ def process(ballots, key=KEY):
                 ballots[b] = ballots[b][:i] # apply undervote rule
                 seen += 1
                 break
-    print(f'{seen} ballots adjusted for undervotes')
+    print '%i ballots adjusted for undervotes' % seen
 
     # RULE: overvotes invalidate remaining rankings
     seen = 0
@@ -69,7 +69,7 @@ def process(ballots, key=KEY):
                 ballots[b] = ballots[b][:i] # apply overvote rule
                 seen += 1
                 break
-    print(f'{seen} ballots adjusted for invalidated/overvotes')
+    print '%i ballots adjusted for invalidated/overvotes' % seen
 
     return [[key.index(x) for x in b] for b in ballots]
 
@@ -83,7 +83,7 @@ def tabulate(ballots, key=KEY, dropped=[4,5]):
 
     # until a winner is found...
     while winner < 0.5:
-        print(f'=============== ROUND {runoff+1} ===============')
+        print '%s ROUND %i %s' % (15*'=', runoff+1, 15*'=')
 
         # new round tally
         tired = 0
@@ -100,22 +100,22 @@ def tabulate(ballots, key=KEY, dropped=[4,5]):
 
         # compute results & check for majority winner
         voters = float(len(ballots) - tired)
-        percent = [(cand, votes/voters) for cand,votes in tally.items()]
+        percent = [(cand, votes/voters) for cand,votes in tally.iteritems()]
         ranking = sorted(percent, key=itemgetter(1))
         winner = ranking[-1][1] # leading candidate percentage
 
-        for k,v in tally.items():
-            print(key[k].ljust(21), str(v).rjust(6), ('%.2f%%' % (percent[k][1]*100)).rjust(8))
+        for k,v in tally.iteritems():
+            print key[k].ljust(21), str(v).rjust(6), ('%.2f%%' % (percent[k][1]*100)).rjust(8)
 
         if winner < 0.5:
             loser = ranking[runoff][0]
             dropped.append(loser)
-            print(f'=== NO WINNER YET! ({tired} exhausted) ===')
-            print(f'...dropping loser: {key[loser]}\n')
+            print '=== NO WINNER YET! (%i exhausted) ===' % tired
+            print '...dropping loser: %s\n' % key[loser]
         runoff += 1
 
-    print(f'\nWINNER is {key[ranking[-1][0]]} with {winner*100:.2f}% of the vote!')
-    print(f'({tired} ballots exhausted)')
+    print '\nWINNER is %s with %.2f%% of the vote!' % (key[ranking[-1][0]], winner*100)
+    print '(%i ballots exhausted)' % tired
 
 if __name__ == '__main__':
     ballots = process(collect(), KEY)
