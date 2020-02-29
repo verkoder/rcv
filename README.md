@@ -18,7 +18,7 @@ The election turned out to be remarkably transparent. Since the incumbent has ch
     Download rcv.py, and place in the same folder as the CSV files
     At a command prompt/terminal, type: python rcv.py
 
-Ballots are loaded, then the tabulator runs the instant runoffs and outputs:
+Ballots are loaded, then the tabulator runs the instant runoffs:
 ```
 296077 ballots collected!
 207487 ballots adjusted for undervotes
@@ -30,7 +30,6 @@ Hoar, William R.S.      6875    2.37%
 REP Poliquin, Bruce   134184   46.33%
 === NO WINNER YET! (6453 exhausted) ===
 ...dropping loser: Hoar, William R.S.
-
 
 =============== ROUND 2 ===============
 Bond, Tiffany L.       19173    6.67%
@@ -55,12 +54,13 @@ The tabulator can be used to run any Ranked Choice Voting election with any size
 
 While the ballots list contain indexed candidates (by int), the program uses a single key of candidates for human-readable output. The same key is used to read the ballots from CSV files.
 
-Make your ranked choice ballots: a list of lists of ints
-**NOTE:** Ballots can be different lengths w/ incomplete rankings
-If you have other ballots as CSV files, just change fields to specify which fields in the CSV contain rankings
-Make your key of indexed candidates
-**NOTE:** Key needs to be as long as your longest ballot
-
+Make your ranked choice ballots: a list of lists of ints:
+```
+[ [0,4,1], [2,3,0], ... ]
+```
+#### Ballots can be different lengths w/ incomplete rankings
+If you have other ballots as CSV files, just change fields to specify which fields in the CSV contain rankings. Make your key of indexed candidates.
+#### Key needs to be as long as your longest ballot
 Currently, two fields overvote/undervote are in the key. Remove these fields from the key, and change the init value for dropped to an empty list.
 
 Edit or remove the ballot rules as needed.
