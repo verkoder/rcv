@@ -7,12 +7,11 @@
 The election turned out to be remarkably transparent. Since the incumbent has charged that RCV is a "black box" I thought it important to dispel any false notions, and show how cleanly and simply the system works.
 
 ### Get the data
-    Download all the CSV files I provide (there are 8)
+Download all the CSV files I provide (there are 8)
 
 **OR**
-
-    Download all "DISTRICT 2 FINAL" files from the Secretary of State's Office
-    Convert them all to CSV, putting them all in the same folder
+1. Download all "DISTRICT 2 FINAL" files from the Secretary of State's Office.
+2. Convert them all to CSV, putting them all in the same folder.
 
 ### Run the script
 Download rcv.py, and place in the same folder as the CSV files.
