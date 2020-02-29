@@ -15,9 +15,11 @@ The election turned out to be remarkably transparent. Since the incumbent has ch
     Convert them all to CSV, putting them all in the same folder
 
 ### Run the script
-    Download rcv.py, and place in the same folder as the CSV files
-    At a command prompt/terminal, type: python rcv.py
-
+Download rcv.py, and place in the same folder as the CSV files.
+At a command prompt/terminal, type
+```
+python rcv.py
+```
 Ballots are loaded, then the tabulator runs the instant runoffs:
 ```
 296077 ballots collected!
@@ -54,7 +56,7 @@ The tabulator can be used to run any Ranked Choice Voting election with any size
 
 While the ballots list contain indexed candidates (by int), the program uses a single key of candidates for human-readable output. The same key is used to read the ballots from CSV files.
 
-Make your ranked choice ballots: a list of lists of ints:
+Make your ranked choice ballots a list of lists of ints:
 ```
 [ [0,4,1], [2,3,0], ... ]
 ```
