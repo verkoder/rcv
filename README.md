@@ -18,7 +18,37 @@ The election turned out to be remarkably transparent. Since the incumbent has ch
     Download rcv.py, and place in the same folder as the CSV files
     At a command prompt/terminal, type: python rcv.py
 
-Ballots are loaded, then the tabulator runs the instant runoffs.
+Ballots are loaded, then the tabulator runs the instant runoffs and outputs:
+```
+296077 ballots collected!
+207487 ballots adjusted for undervotes
+1453 ballots adjusted for invalidated/overvotes
+=============== ROUND 1 ===============
+Bond, Tiffany L.       16552    5.71%
+DEM Golden, Jared F.  132013   45.58%
+Hoar, William R.S.      6875    2.37%
+REP Poliquin, Bruce   134184   46.33%
+=== NO WINNER YET! (6453 exhausted) ===
+...dropping loser: Hoar, William R.S.
+
+
+=============== ROUND 2 ===============
+Bond, Tiffany L.       19173    6.67%
+DEM Golden, Jared F.  133216   46.34%
+Hoar, William R.S.         0    0.00%
+REP Poliquin, Bruce   135073   46.99%
+=== NO WINNER YET! (8615 exhausted) ===
+...dropping loser: Bond, Tiffany L.
+
+=============== ROUND 3 ===============
+Bond, Tiffany L.           0    0.00%
+DEM Golden, Jared F.  142440   50.62%
+Hoar, William R.S.         0    0.00%
+REP Poliquin, Bruce   138931   49.38%
+
+WINNER is DEM Golden, Jared F. with 50.62% of the vote!
+(14706 ballots exhausted)
+```
 
 ### Running on other elections
 The tabulator can be used to run any Ranked Choice Voting election with any size list of ballots, where each ballot itself is a ranked list.
