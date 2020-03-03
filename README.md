@@ -59,7 +59,7 @@ Make your ranked choice ballots a list of lists of ints:
 ```
 [ [0,4,1], [2,3,0], ... ]
 ```
-### Tips on running other elections
+### Tips for running on other elections
 • Ballots can be different lengths w/ incomplete rankings
 
 • If you have other ballots as CSV files, just change fields to specify which fields in the CSV contain rankings. Make your key of indexed candidates.
