@@ -59,9 +59,9 @@ Make your ranked choice ballots a list of lists of ints:
 ```
 [ [0,4,1], [2,3,0], ... ]
 ```
-#### Ballots can be different lengths w/ incomplete rankings
-If you have other ballots as CSV files, just change fields to specify which fields in the CSV contain rankings. Make your key of indexed candidates.
-#### Key needs to be as long as your longest ballot
-Currently, two fields overvote/undervote are in the key. Remove these fields from the key, and change the init value for dropped to an empty list.
-
-Edit or remove the ballot rules as needed.
+## Tips on running other elections
+• Ballots can be different lengths w/ incomplete rankings
+• If you have other ballots as CSV files, just change fields to specify which fields in the CSV contain rankings. Make your key of indexed candidates.
+• Key needs to be as long as your longest ballot
+• Currently, two fields overvote/undervote are in the key. Remove these fields from the key, and change the init value for dropped to an empty list.
+• Edit or remove the ballot rules as needed.
